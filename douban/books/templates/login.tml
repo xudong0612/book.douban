@@ -1,0 +1,35 @@
+{% include 'head.tml' %}
+<div id="wrapper">
+<div id="content">
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+	<h1>登录豆瓣</h1>
+	<div class="grid-16-8 clearfix">
+<div class="article">
+<br/>
+	<form action='/account/login' method='post'>
+		<table>
+			{{form.as_table}}
+		</table>
+		<div class="item">
+      		<label>&nbsp;</label>
+        	<input type="submit" value="登录" name="user_login" class="btn-submit" tabindex="5"/>
+    	</div>
+	</form>
+</div>
+<div class="aside"> 
+	<ul id="side-nav" class="aside">
+    	<li>&gt;&nbsp;还没有豆瓣帐号？<a rel="nofollow" href="/account/register">立即注册</a></li>
+    	
+  	</ul>
+</div>
+</div>
+</div>
+
+
+{% include 'foot.tml' %}

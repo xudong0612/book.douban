@@ -1,0 +1,144 @@
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+
+
+
+  <div id="wrapper">
+      
+  <div id="content">
+    {%if note.user == user%}
+    <h1>我对《{{book.title}}》的笔记-第{{note.page}}页</h1>
+    {%else%}
+    <h1>《{{book.title}}》的笔记-第{{note.page}}页</h1>
+	{%endif%}
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+
+
+
+<div class="mod profile clearfix">
+    <div class="pic">
+        <a href="{%url douban.books.views.user note.user.id%}"><img src="/static/touxiang.jpg" alt="{{note.user.username}}" /></a>
+    </div>
+    <div class="info">
+        <h6><a href="{%url douban.books.views.user note.user.id%}">{{note.user.username}}</a>
+        </h6>
+        <p><span class="stat">{{list.status}}</span> <a class="name" href="{%url douban.books.views.book book.id%}">{{book.title}}</a>
+        </p>
+    </div>
+</div>
+
+<div class="mod rnote">
+    <div class="bd clearfix">
+        <div class="annotation-info">
+          <ul>
+            <li>
+                页码：<span class="page-num">第{{note.page}}页</span>
+        		<span class="page-num">{{note.date}}</span>
+            </li>
+          </ul>
+        </div>
+        <br /> 
+        <pre id="link-report" class="">{{note.contents}}</pre>
+        <br /> 
+
+ 
+
+
+
+
+    </div>
+</div>
+{%for reply in replies%}
+<div id="comments" class="mod comment">
+    <div class="bd">
+        
+        <h3><span class="pl">{{reply.date}} <a href="{%url douban.books.views.user reply.user.id%}" title="{{reply.user.username}}">{{reply.user.username}}</a></span></h3>
+        <p class="comment-item" data-cid="163956">
+           {{reply.cotents}}
+            <br/>
+        <span class="gact" style="width:80px;">
+        </span><br/>
+        </p>
+    </div>
+</div>
+{%endfor%}
+
+{%if user != -1%}
+<form method="post" action="{%url douban.books.views.note note.id%}"><div style="display:none;"><input type="hidden" name="ck" value="71CJ"/></div>
+    
+  
+  <h2>
+    你的回应
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+  </h2>
+
+    {{form.as_table}}
+    <br /> 
+    <span class="bn-flat"><input type="submit" value="加上去"/></span>
+</form>
+{%endif%}
+
+
+</div>
+      <div class="aside">
+        
+
+
+
+<p class="pl2">&gt; <a href="{%url douban.books.views.user_notes note.user.id%}">{{note.user.username}}的所有笔记（{{user_notes|length}}篇）</a></p>
+
+<div class="mod other-notes">
+    <div class="hd">
+      
+  
+  <h2>
+    {{note.user.username}}对本书的所有笔记
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+  </h2>
+
+    </div>
+    {%for note in user_notes_for_book%}
+    <div class="bd">
+        <ul>
+          <li>
+            <h6><a href="{%url douban.books.views.note note.id%}">{{note.paragraph}}</a></h6>
+            
+            <p>{{note.contents|truncatewords:50}}...</p>
+            
+          </li>
+          <li>
+            <h6><span class="pl">第{{note.page}}页</span></h6>
+          </li>
+          <br />
+        </ul>
+    </div>
+    {%endfor%}
+    </div>
+
+
+
+  
+  <h2>
+    说明
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+  </h2>
+
+<p class="pl">
+  <img src="http://img3.douban.com/pics/big_quotel.png"
+    style="vertical-align: -3px; _vertical-align: 0;">
+  表示其中内容是对原文的摘抄
+</p>
+
+      </div>
+      <div class="extra">
+        
+
+      </div>
+    </div>
+  </div>
+
+        
+ 
+{%include 'foot.tml'%}

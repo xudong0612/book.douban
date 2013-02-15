@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/static/mixed_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_master_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_subject_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_dialog_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_jquery.snippet_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_notes_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/mixed_static_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_people_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_remark_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/paced_issue_style.css" type="text/css" />
+<title>豆瓣</title>
+</head>
+<body>
+<div id="db-global-nav" class="global-nav global-nav-a">
+	<div class="bd">
+		<div class="top-nav-info">
+			{%if user != -1%}
+			<a href="/account/logout">退出</a>
+			
+			<a href="">{{user.username}}的账号</a>
+			{%else%}
+    		<a href="/account/login">登录</a>
+    		{%endif%}
+    		<a href="/account/register">注册</a>
+		</div>
+		
+	</div>
+</div>
+

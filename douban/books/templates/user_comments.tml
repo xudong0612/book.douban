@@ -1,0 +1,97 @@
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+
+  
+
+
+    <div id="wrapper">
+        
+
+        
+  <div id="content">
+    
+
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+  
+    
+  <div class="user-profile-nav" id="db-usr-profile">
+  {%if mine == 1%}
+    <h1> 我的书评(3) </h1>
+    {%else%}
+     <h1>{{touser.username}}的书评({{comments|length}}) </h1>
+   {%endif%}
+    {%for comment in comments%}
+    <ul class="tlst clearfix" style="clear:both;">
+        <li class="nlst"><h3>
+            
+            <a title="{{comment.title}}" href="{%url douban.books.views.comment comment.id%}">{{comment.title}}</a>
+        </h3></li>
+        <li class="ilst" style="clear:both;">
+                
+    
+        <a href="{%url douban.books.views.book comment.book.id%}" title="{{comment.book.id}}"><img src="{{comment.book.pic}}" class="fil" alt="{{comment.book.id}}"/></a>
+
+        </li>
+        <li class="clst">
+            <span class="pl ll obss">
+                <span class="starb">                    <a href="{%url douban.books.views.user comment.user.id%}">{{comment.user.username}}</a>                    &nbsp;                        评论: <a href="{%url douban.books.views.book comment.book.id%}">{{comment.book.title}}</a>                </span>
+                <span class="allstar30" title="还行"></span>
+            </span>
+            <br /><br />
+            <div id='review_5706747_short' class="review-short">
+                    {{comment.contents|truncatewords:"150"}}......
+
+            </div>
+            <div id="review_5706747_full" style="display:none"></div>
+        </li>
+    </ul>
+    <div class="clear"></div>
+{%endfor%}
+</div>
+</div>
+      <div class="aside">
+        
+
+    
+  
+  <h2>
+    用你的鼠标投票
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+  </h2>
+
+    <div class="indent">
+      <span class="pl">
+        如果你觉得一篇评论对你有帮助，请你点击“有用”。你的投票直接决定哪些评论出现在豆瓣首页和“豆瓣最受欢迎的评论”里，以及在书、电影和音乐介绍页里评论的排序。
+        <br /><br />
+        所有“没用”的点击都是匿名的。
+      </span>
+    </div>
+    <br />
+    <p class="p12">
+      &gt;
+      {%if mine == 1%}
+      <a href="{%url douban.books.views.user user.id%}">
+        我的读书主页
+      </a>
+      {%else%}
+      <a href="{%url douban.books.views.user touser.id%}">
+        {{touser.username}}的读书主页
+      </a>
+      {%endif%}
+    </p>
+    <br/>
+    
+
+
+      </div>
+      <div class="extra">
+        
+      </div>
+    </div>
+  </div>
+
+        
+ 
+{%include 'foot.tml'%}

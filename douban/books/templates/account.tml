@@ -1,0 +1,57 @@
+{% include 'head.tml' %}
+
+<div id="wrapper">
+<div id="content">
+        
+<h1>{{user.username}}的帐号</h1>
+
+    <div class="grid-16-8 clearfix">
+    <div class="article">
+	 <div class="clear"></div>
+    <div class="xbar"><div>
+         <span class="now"><span>基本设置</span></span>
+    </div>
+</div>
+    <div class="clear"></div>
+    <form action="/account" method="post">
+    	<table>
+    		{{form.as_table}}
+    		<tr>
+        	<td class="m" align="right">登录邮箱: </td>
+        	<td valign="top">
+                <span>{{user.email}}</span>
+                        <a href="">更改</a>
+        	</td>
+        	 </tr>
+        	<tr>
+        	<td class="m" align="right">登录密码: </td>
+        	<td valign="top">
+          	  <a href="">更改</a>
+        	</td>
+        	</tr>
+        	<tr>
+        <td></td>
+        	<td><span class="bn-flat"><input name="pf_submit" type="submit" value="更新设置" tabindex="8"></span></td>
+    	</tr>
+    </form>
+    </div>
+    <div class="aside">
+            
+
+
+    <h2>
+        寻找“个人介绍”或“邮件提醒”设置？
+            
+    </h2>去<a href="/mine/">我的豆瓣</a>，个人介绍可以直接编辑，邮件提醒位于名号下方的“设置”里
+	<br/>
+	<br/>
+        </div>
+        <div class="extra">
+            
+        </div>
+    
+  </div>
+  </div>
+
+       
+{% include 'foot.tml' %}

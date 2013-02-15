@@ -1,0 +1,96 @@
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+    <div id="wrapper">
+  <div id="content">
+    <div class="grid-16-8 clearfix">
+      <div class="article">
+  <div class="user-profile-nav" id="db-usr-profile">
+  {%if mine == 1%}
+    <h1> 我的笔记({{notes|length}}) </h1>
+    {%else%}
+     <h1> {{touser.username}}的笔记({{notes|length}}) </h1>
+     {%endif%}
+  </div>
+
+
+
+    <div class="clear"></div>
+    
+    <div class="clear"></div>
+
+
+
+
+
+  {%for note in notes%}
+    <div class="book-cover">
+    
+      <img src="{{note.book.pic}}">
+    </div>
+  <div class="annotations-context">
+    <h3>
+      <a href="{%url douban.books.views.book note.book.id%}" title="{{note.book.title}}">
+        {{note.book.title}}
+      </a>
+    </h3>
+   
+    <ul class="rnotes">
+      
+        <li class="item ">
+          <h5>
+            <a href="{%url douban.books.views.note note.id%}">
+              第{{note.page}}页
+            </a>
+          </h5>
+          <div class="reading-note">
+          {{note.contents|truncatewords:"200"}}......
+                      </div>
+        </li>
+    </ul>
+    
+  </div>
+  <div class="clear"></div>
+  <br/>
+ 
+ {%endfor%}
+   
+
+
+</div>
+      <div class="aside">
+        
+
+
+<div class="mod all-other-notes">
+    <div class="hd">
+      
+  
+  <h2>
+   {%if mine == 1%}
+    <h1> 我的笔记({{notes|length}}) </h1>
+    {%else%}
+     <h1> {{touser.username}}的笔记({{notes|length}}) </h1>
+     {%endif%}
+  
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+      <span class="pl">&nbsp;(
+          <a href="{%url douban.books.views.user_notes touser.id%}">全部{{notes|length}}条</a>
+        ) </span>
+  </h2>
+
+    </div>
+    <div class="bd">
+        <dl>
+        {%for note in notes%}
+            <dt><a href="{%url douban.books.views.note note.id%}">{{note.book.title}}</a></dt>
+            <dd>{{forloop.counter}}</dd>
+         {%endfor%} 
+        </dl>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+{%include 'foot.tml'%}

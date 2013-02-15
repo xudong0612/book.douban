@@ -1,0 +1,246 @@
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+
+    <div id="wrapper">
+       
+  <div id="content">
+    
+    <h1>{{user.username}}的读书主页</h1>
+    <div class="grid-16-8 clearfix">
+      <div class="article">
+  <div id="db-book-mine">
+  <h2>
+    在读
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+      <span class="pl">&nbsp;(
+          <a href="">{{reading|length}}本</a>
+        ) </span>
+  </h2>
+  <div class="mod">
+    <div class="sub-list">
+      <ul class="list-s clearfix">
+        {%for list in reading%}
+        <li>
+        
+          <a href="{%url douban.books.views.book list.book.id%}" ><img alt="{{list.book.title}}" title="{{list.book.title}}" src="{{list.book.pic}}"></a>
+        </li>
+        {%endfor%}
+      </ul>
+    </div>
+  </div>
+  <h2>
+    读过
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+      <span class="pl">&nbsp;(
+          <a href="">{{readed|length}}本</a>
+        ) </span>
+  </h2>
+  <div class="mod">
+    <div class="sub-list">
+      <ul class="list-s clearfix">
+        {%for list in readed%}
+        <li>
+          <a href="{%url douban.books.views.book list.book.id%}" class="cover"><img alt="{{list.book.title}}" title="{{list.book.title}}" src="{{list.book.pic}}"></a>
+        </li>
+        {%endfor%}
+        
+      </ul>
+    </div>
+  </div>
+  <h2>
+    想读
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+      <span class="pl">&nbsp;(
+          <a href="">{{toread|length}}本</a>
+        ) </span>
+  </h2>
+  <div class="mod">
+    <div class="sub-list">
+      <ul class="list-s clearfix">
+        {%for list in toread%}
+        <li>
+          <a href="{%url douban.books.views.book list.book.id%}" class="cover"><img alt="{{list.book.title}}" title="{{list.book.title}}" src="{{list.book.pic}}"></a>
+        </li>
+        {%endfor%}
+        
+      </ul>
+    </div>
+  </div>
+  </div>
+  
+  <div class="mod comment-m">
+    
+  
+  <h2>
+    我的书评
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+      <span class="pl">&nbsp;(
+          <a href="{%url douban.books.views.user_comments user.id%}">{{comments|length}}篇</a>
+        ) </span>
+  </h2>
+
+      {%for comment in comments%}
+      <div class="comment-item">
+        <div class="pic">
+            <a href="{%url douban.books.views.book comment.book.id%}" title="{{comment.book.title}}"><img src="{{comment.book.pic}}" alt="{{comment.book.title}}"></a>
+        </div>
+        <div class="content">
+          <h3>
+            <a title="{{comment.title}}" href="{%url douban.books.views.comment comment.id%}" class="title">{{comment.title}}</a>
+          </h3>
+          <div class="author">
+            评论:&nbsp;<a href="{%url douban.books.views.book comment.book.id%}">{{comment.book.title}}</a>
+          </div>
+          <p>{{comment.contents|truncatewords:"400"}}......<a href="{%url douban.books.views.comment comment.id%}"
+            >({{commnet.reply_set.all|length}}回应)</a></p>
+        </div>
+      </div>
+      {%endfor%}
+   
+    
+  </div>
+
+  	
+    <h2>我的笔记 &nbsp; ·&nbsp;·&nbsp;·&nbsp;
+        <span class="pl">( <a href="{%url douban.books.views.user_notes user.id%}">写作{{notes_own|length}}篇</a> )
+          
+    </h2>
+    
+
+
+
+  
+  <div class="annotations-context">
+  {%for note in notes_own%}
+    <h3>
+      <a href="{%url douban.books.views.book note.book.id%}" title="{{note.book.title}}">
+        {{note.book.title}} 
+      </a>
+    </h3>
+    <p class="pl">
+     
+    </p>
+    <ul class="rnotes">
+      
+        <li class="item ">
+          <h5>
+            <a href="{%url douban.books.views.note note.id%}">
+              第{{note.page}}页
+            </a>
+          </h5>
+          <div class="reading-note">
+          {{note.contents|truncatewords:"150"}}......
+            </div>
+        </li>
+    </ul>
+    {%endfor%}
+  </div>
+  
+
+
+  
+    
+
+<div class="mod">
+    <h2>我的推荐 &nbsp; ·&nbsp;·&nbsp;·&nbsp;
+        <span class="pl">(<a href="">{{recs|length|default:"0"}}个</a>)</span>
+    </h2>
+  
+  
+  <ul>
+      
+      
+  {%for rec in recs%}
+  <li class="mbtr">
+    <a name="r10249938"></a>
+    
+    
+  
+    <a href="{%url douban.books.views.user user.id%}">{{user.username}}</a>
+
+    
+      
+      <span class="pl">
+        推荐<a href="{%url douban.books.views.book rec.book.id%}">{{rec.book.title}}</a>这本书
+      </span>
+   
+
+
+    
+      
+    <div class="indentrec"></div>
+
+  </li>
+  
+  <div class="clear"></div>
+ {%endfor%}
+  </ul>
+
+</div>
+
+
+  
+
+</div>
+      <div class="aside">
+        
+  
+  <div class="book-user-profile mod">
+    <div class="clearfix basic-info">
+      <img class="avatar" src="/static/touxiang.jpg"
+        width=48 height=48 />
+      <div class="username"> {{user.username}}</div>
+      <div class="time-registered">
+        
+      </div>
+    </div>
+      <div class="sync-setting">
+        
+      </div>
+    <ul class="number-accumulated">
+      
+    
+  <li class="number-item">
+    <span class="number-label">读过</span>
+    <span class="number"> {{readed|length}} </span>
+  </li>
+
+
+      
+    
+  <li class="number-item">
+    <span class="number-label">书评</span>
+    <span class="number"> {{comments|length}} </span>
+  </li>
+
+
+      
+    
+  <li class="number-item">
+    <span class="number-label">笔记</span>
+    <span class="number"> {{notes_own|length}} </span>
+  </li>
+
+
+    </ul>
+    
+    
+  </div>
+
+
+
+<div id="friend">
+
+</div>
+
+    
+
+      </div>
+      <div class="extra">
+        
+      </div>
+    </div>
+  </div>
+
+
+{%include 'foot.tml'%}

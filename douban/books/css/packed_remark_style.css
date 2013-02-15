@@ -1,0 +1,311 @@
+.quote {
+	margin: 0;
+	padding: 0 0 0 15px
+}
+
+.book-content {
+	font-size: 14px;
+	margin: 20px 0;
+	word-wrap: break-word;
+	word-break: break-all
+}
+
+.book-content pre {
+	-moz-user-select: none
+}
+
+.book-copyleft {
+	border: 1px solid #ccc;
+	color: #666;
+	padding: 10px 5px
+}
+
+.book-copyleft .tip {
+	float: left;
+	display: block;
+	height: 40px
+}
+
+.remark-point {
+	display: none;
+	position: relative;
+	background: #e1e1e1;
+	padding: 0 6px;
+	margin-left: 6px;
+	font-size: 12px;
+	cursor: pointer;
+	border: 1px solid #e1e1e1;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px
+}
+
+.remark-point span {
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+	width: 5px
+}
+
+.remark-point em {
+	position: absolute;
+	height: 0;
+	width: 0;
+	overflow: hidden;
+	font-size: 0;
+	line-height: 0;
+	border-color: #e1e1e1 transparent transparent transparent;
+	border-style: solid dashed dashed dashed;
+	border-width: 5px 6px 0 0;
+	top: 15px;
+	left: 4px;
+	_top: 17px;
+	_left: 10px
+}
+
+span.remark-active {
+	display: inline
+}
+
+span.remark-popwin {
+	background: #79c075;
+	color: #fff;
+	border: 1px solid #79c075
+}
+
+span.remark-popwin em {
+	border-color: #79c075 transparent transparent transparent
+}
+
+.remark-wrap {
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
+	position: absolute;
+	width: 4em;
+	left: 570px;
+	bottom: 0
+}
+
+.remark-tip {
+	position: absolute;
+	width: 550px;
+	background: #fff;
+	border: 1px solid #ddd;
+	padding: 13px 13px 10px;
+	word-wrap: break-word;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: 2px 2px 2px #999;
+	-webkit-box-shadow: 2px 2px 2px #999;
+	box-shadow: 2px 2px 2px #999;
+	z-index: 100
+}
+
+.tip-arrow {
+	position: absolute;
+	width: 9px;
+	height: 6px;
+	top: 0;
+	left: 15px;
+	margin-top: -6px;
+	background: url('/pics/arrow_top.gif') no-repeat
+}
+
+#remarks h2 {
+	color: #060;
+	font: 14px/150% Arial, Helvetica, sans-serif;
+	margin-bottom: 8px
+}
+
+#remarks h2 span {
+	color: #666;
+	font: 12px/150% Arial, Helvetica, sans-serif
+}
+
+#remarks p {
+	line-height: 19px;
+	margin-bottom: 1em
+}
+
+#remarks p b {
+	font-weight: bold
+}
+
+#remarks .time {
+	color: #999
+}
+
+#remarks .bn-close {
+	font: 11px "Comic Sans MS";
+	padding: 0 3px;
+	position: absolute;
+	right: 12px;
+	top: 10px
+}
+
+#remarks a.bn-close:link {
+	color: #b4b4b4
+}
+
+#remarks a.bn-close:hover {
+	color: #fab0b6;
+	background: 0;
+	border: 0
+}
+
+#remarks textarea {
+	border: 1px solid #ccc;
+	overflow: hidden;
+	padding: 5px;
+	vertical-align: bottom;
+	width: 537px;
+	height: 40px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	margin-bottom: 10px
+}
+
+#remarks .bn-flat {
+	vertical-align: middle
+}
+
+#remarks .bn-flat input {
+	font-size: 14px
+}
+
+#remarks .errors {
+	color: #f92d09;
+	margin-left: 5px;
+	height: 30px;
+	line-height: 30px
+}
+
+#remarks .errors b {
+	margin: 0 5px;
+	font-size: 14px
+}
+
+.remark-init textarea {
+	height: 1.2em
+}
+
+.remark-disable .bn-flat input {
+	border-color: #b9b9b9 !important;
+	background: #f0f0f0 !important;
+	color: #999 !important;
+	cursor: text
+}
+
+.green_tab li {
+	display: inline;
+	margin-right: 10px
+}
+
+.green_tab li a {
+	zoom: 1;
+	white-space: nowrap;
+	height: 14px;
+	line-height: 14px
+}
+
+.green_tab .on a {
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background: #83bf73;
+	color: #fff;
+	padding: 0 5px
+}
+
+.write-remark {
+	margin-bottom: 20px
+}
+
+form .error {
+	margin: 5px 0
+}
+
+form.new,form.modify {
+	display: none;
+	margin-bottom: 10px
+}
+
+form.new textarea,form.modify textarea {
+	width: 570px;
+	height: 84px
+}
+
+form.new input,form.modify input {
+	cursor: pointer
+}
+
+.remark-items {
+	margin-top: 20px
+}
+
+.remark-items .item {
+	margin-bottom: 25px;
+	overflow: visible
+}
+
+.remark-items .item .hd {
+	font-size: 14px;
+	padding-bottom: 1.5em
+}
+
+.remark-items .point {
+	margin-bottom: 15px
+}
+
+.remark-items .point .hd {
+	padding: 0
+}
+
+.remark-items .sub-item {
+	margin-bottom: 13px
+}
+
+.remark-items .sub-item .opt {
+	text-align: right;
+	color: #999
+}
+
+.remark-items .lnk-cancel {
+	margin-left: 5px
+}
+
+.remark-items .opt {
+	color: #999;
+	text-align: right
+}
+
+.book-content {
+	position: relative
+}
+
+.remark-items .short {
+	border-left: 1px solid #ccc;
+	margin: 0 0 13px 1em;
+	padding: 2px 0 2px 1em;
+	-moz-user-select: none
+}
+
+.book-content .full,.remark-items .full {
+	display: none;
+	position: absolute;
+	top: 0;
+	padding: 15px;
+	border: 1px solid #ddd;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: 2px 2px 2px #999;
+	-webkit-box-shadow: 2px 2px 2px #999;
+	box-shadow: 2px 2px 2px #999;
+	background: #fff;
+	width: 100%;
+	-moz-user-select: none
+}

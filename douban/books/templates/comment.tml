@@ -1,0 +1,210 @@
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+
+    <div id="wrapper">
+        
+
+        
+  <div id="content">
+    
+  <h1>{{comment.title}}</h1>
+
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+  <div class="obss" xmlns:v="http://rdf.data-vocabulary.org/#" typeof="v:Review">
+    <div class="piil">
+      <a href="{%url douban.books.views.user comment.user.id%}/"><img class="pil" src="/static/touxiang.jpg"></a>
+    </div>
+
+    <div class="piir">
+      <span property="v:dtreviewed" content="{{comment.date}}" class="mn">{{comment.date}}</span>
+      <span class="pl2">
+        　　来自: <a href="{%url douban.books.views.user comment.user.id%}"><span property="v:reviewer">{{comment.user.username}}</span></a>
+
+         
+        <br/>
+        <a href="{%url douban.books.views.book book.id%}"><span property="v:itemreviewed">{{book.title}}</span></a>的评论
+                  
+       
+      </span>
+      <br/>
+      <br/>
+
+      
+
+      <div id="link-report">
+        
+        <span property="v:description">　{{comment.contents}}</span>
+      </div>
+
+      
+
+
+      <div class="clear"></div>
+      
+
+      
+  
+  <div class="review-panel" name="4506485">
+    
+    <div class="review-stat">
+      
+      你认为这篇评论：
+      <span class="useful">
+        <a class="btn-useful " href="{%url douban.books.views.rate comment.id%}">有用</a>
+        <em id="ucount4506485u">{{comment.rate|default:"0"}}</em>
+      </span>
+      <span class="unuseful">
+        <a class="btn-unuseful " href="{%url douban.books.views.derate comment.id%}">没用</a>
+        <em id="ucount4506485l">{{comment.derate|default:"0"}}</em>
+      </span>
+    </div>
+  </div>
+
+
+      <div class="ul" style="margin-top:10px;margin-bottom:5px"></div>
+        
+
+
+   
+
+
+      <div class="clear"></div>
+      
+  
+  <div id="comments">
+
+        
+ {%for reply in replies%}
+  <span class="comment-item" data-cid="3329563" data-target_id="4506485" data-target_kind="1012" style="margin-bottom:0px;overflow:visible;">
+    <h3 class="content" style="padding-left:0px;">
+      <span class="pl">{{reply.date}} <a href="{%url douban.books.views.user reply.user.id%}">{{reply.user.username}}</a></span>
+    </h3>
+    　　{{reply.cotents}}
+    
+  
+  <div class="align-right">
+    &nbsp;
+  </div>
+
+  </span>
+  <br/>
+{%endfor%}
+   
+  
+  
+  <h2>
+    你的回应
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+  </h2>
+
+      <div class="txd">
+        <form action="{%url douban.books.views.comment comment.id%}" method="POST" onsubmit="this.onsubmit=function(){return false}"><div style="display:none;"><input type="hidden" name="ck" value="8FJw"/></div>
+          <table>
+          {{form.as_table}}
+          </table>
+          <input type="submit" value="加上去"/>
+        </form>
+      </div>
+
+
+  <br/>
+
+
+  </div>
+
+    </div>
+  </div>
+ 
+</div>
+      <div class="aside">
+
+  <div class="copyright indent">本评论版权属于作者deep，并受法律保护。除非评论正文中另有声明，没有作者本人的书面许可任何人不得转载或使用整体或任何部分的内容。</div>
+
+  
+
+
+  <div class="gray_ad" id="buyinfo-report">
+  
+
+
+
+
+  <p class="pl2">
+    &gt; <a href="{%url douban.books.views.book book.id%}">{{book.title}}</a>
+  </p>
+  <div class="indent">
+    
+
+<div>
+    <a href="{%url douban.books.views.book book.id%}"><img class="fil" alt="{{book.title}}" title="{{book.title}}" src="{{book.pic}}" rel="v:image"></a>
+<br clear="all"/>
+
+    <span class="pl">作者:</span>{{book.author}}<br/>
+
+    <span class="pl">isbn:</span> {{book.sibn}}<br/>
+
+    
+            
+    <span class="pl">书名:</span> {{book.title}}<br/>
+
+    
+            
+    <span class="pl">页数:</span> {{book.pages}}頁<br/>
+
+        
+    <span class="pl">定价:</span> {{book.price}}<br/>
+
+    
+            
+    <span class="pl">出版社:</span> {{book.publication}}<br/>
+
+    
+            
+    
+            
+    <span class="pl">装帧:</span> 平裝<br/>
+
+    
+            
+    <span class="pl">出版年:</span> {{book.publication_date}}<br/>
+
+            
+</div>
+
+  </div>
+      
+  
+  <h2>
+    {{comment.user.username}}的其他评论
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+  </h2>
+
+    <div class="indent other_review">
+      <ul>
+      		{%for comment in user_comments%}
+            <li>
+              <div class="clearfix">
+                <a href="{%url douban.books.views.comment comment.id%}" class="ll">{{comment.title}}</a>
+                
+
+              </div>
+              (评<a href="{%url douban.books.views.book comment.book.id%}">{{comment.book.title}}</a>)
+            </li>
+            {%endfor%}
+      </ul>
+      <p class="pl clearfix">
+      <a class="rr" href="{%url douban.books.views.user_comments comment.user.id%}">&gt; 全部评论({{user_comments|length}})</a>
+      </p>
+    </div>
+
+      </div>
+      <div class="extra">
+        
+      </div>
+    </div>
+  </div>
+
+
+{%include 'foot.tml'%}

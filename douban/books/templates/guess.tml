@@ -1,0 +1,91 @@
+    {% include 'head.tml' %}
+{% include 'navigate.tml' %}
+    <div id="wrapper">
+        
+
+        
+  <div id="content">
+    
+    
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+<h2>豆瓣猜你的阅读兴趣  · · · · · ·</h2>
+
+
+
+  <div id="subject_list">
+ 
+  
+        <p class="ulfirst"></p>
+	
+      <table width="100%">
+        <tr class="item">
+        {%for book in recommendations%}
+          <td width="100" valign="top">
+            <a class="nbg" href="{%url douban.books.views.book book.id%}"
+              onclick="moreurl(this,{i:'0'})"
+
+              >
+              <img src="{{book.pic}}" width="64" />
+            </a>
+          </td>
+          <td valign="top">
+            
+            <div class="pl2">
+
+
+              <a onclick=&#34;moreurl(this,{i:&#39;0&#39;})&#34; title="{{book.title}}" 
+                href="{%url douban.books.views.book book.id%}"
+              >
+                {{book.title}}
+
+                
+              </a>          
+                <br/>
+                <span style="font-size:12px;">{{book.author}}</span>
+            </div>
+
+              <p class="pl">{{book.publication}} / {{book.publication_date}} / {{book.price}}</p>          
+              <div class="star clearfix">
+                  <span class="allstar45"></span>
+                  <span class="rating_nums">{{book.evaluation}}</span>
+
+                <span class="pl">(
+                    {{book.evaluatioins.all|length|default:"0"}}人评价
+                )</span>
+              </div>
+
+
+          </td>
+          {%if forloop.counter|divisibleby:"2"%}
+        </tr>
+       <div class="clear"></div>
+      
+        <tr class="item">
+        {%endif%}
+      {%endfor%}
+      </table>
+        <p class="ul"></p>  
+        
+
+
+  </div>
+
+</div>
+    
+
+<div class="aside">
+<h2>什么是豆瓣猜  · · · · · ·</h2>
+<p class="rec-intro">
+这是豆瓣给你的个人推荐。通过每天分析你的读过、想读、在读和标签，豆瓣会从海量数据里挑选你会感兴趣的内容给你。
+<br>
+<br>
+你用得越多，豆瓣猜得就越准确。
+</p>
+</div>
+  
+  </div>
+  </div>
+
+{% include 'foot.tml' %}

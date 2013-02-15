@@ -1,0 +1,257 @@
+.other-notes .bd {
+	margin: 0 0 10px 0
+}
+
+.other-notes li {
+	border-bottom: 1px dashed #ddd;
+	padding: 5px 0 10px 0
+}
+
+.other-notes li p {
+	margin: 0
+}
+
+.other-notes .ft {
+	text-align: right
+}
+
+.all-other-notes {
+	width: 70%
+}
+
+.all-other-notes dt {
+	border-bottom: 1px dashed #ddd;
+	padding: 2px 0
+}
+
+.all-other-notes dd {
+	float: right;
+	margin-top: -25px;
+	padding: 2px 0
+}
+
+.profile {
+	color: #666;
+	overflow: hidden;
+	margin: 0 0 10px 0
+}
+
+.profile .pic {
+	float: left;
+	margin: 0 10px 0 0
+}
+
+.profile .info p {
+	margin: 4px 0 0 0
+}
+
+.profile .info p .stat,.profile .info p .name,.profile .info p .star-img
+	{
+	float: left;
+	margin-right: 8px
+}
+
+.profile .info p .star-img {
+	margin: 3px 0 0 0
+}
+
+.subject {
+	float: none;
+	overflow: hidden;
+	width: auto;
+	border-top: 1px dashed #ddd;
+	margin: 0 20px 20px 60px;
+	padding: 20px 0 0 0
+}
+
+.subject .pic {
+	float: left
+}
+
+.subject .pic img {
+	width:
+}
+
+.subject .info {
+	margin-left: 90px
+}
+
+.subject .info span {
+	color: #888
+}
+
+.article h3 {
+	margin: 0;
+	padding: 0 5px;
+	position: relative
+}
+
+.article h3 .a_more {
+	position: absolute;
+	right: 5px;
+	top: 2px;
+	display: block;
+	background: url('/pics/arrow2.gif') no-repeat 50% 50%;
+	width: 56px;
+	height: 19px
+}
+
+.article h3 .a_more:hover {
+	background: url('/pics/arrow0.gif')
+}
+
+.article h3 .a_more span {
+	display: none
+}
+
+.article h3 .contract {
+	background: url('/pics/arrow3.gif') no-repeat 50% 50%
+}
+
+.article h3 .contract:hover {
+	background: url('/pics/arrow1.gif') no-repeat 50% 50%
+}
+
+.article .pl,.article .rnotes {
+	margin: 5px 0;
+	padding: 0 5px
+}
+
+.rnotes h5 {
+	color: #666;
+	font-size: 12px;
+	margin: 8px 0 4px 0;
+	padding: 0
+}
+
+.rnotes li.item {
+	overflow: hidden;
+	margin: 0 0 15px 0;
+	padding: 0 0 10px 0
+}
+
+.rnotes .more {
+	display: none
+}
+
+.rnotes .reply {
+	text-align: right;
+	color: #666
+}
+
+.rnotes .reply span {
+	padding-right: 8px
+}
+
+.comment .bd {
+	margin: 10px 0
+}
+
+.comment .bd h3 {
+	padding: 0 5px
+}
+
+.comment .bd p {
+	padding: 0 10px
+}
+
+.comment .bd .gact {
+	float: right
+}
+
+.rating00-t,.rating1-t,.rating15-t,.rating2-t,.rating25-t,.rating3-t,.rating35-t,.rating4-t,.rating45-t,.rating5-t,.rating-t
+	{
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	height: 9px;
+	overflow: hidden;
+	width: 55px;
+	font: 0/0 tahoma;
+	background: url(/pics/ui/core2.png) no-repeat 0 0
+}
+
+.rating00-t,.rating1-t em,.rating15-t em,.rating2-t em,.rating25-t em,.rating3-t em,.rating35-t em,.rating4-t em,.rating45-t em,.rating5-t em,.rating-t em
+	{
+	color: #ff5c38;
+	font-family: tahoma
+}
+
+.rating00-t {
+	background-position: 0 -240px
+}
+
+.rating1-t {
+	background-position: 0 -216px
+}
+
+.rating15-t {
+	background-position: 0 -204px
+}
+
+.rating2-t {
+	background-position: 0 -193px
+}
+
+.rating25-t {
+	background-position: 0 -180px
+}
+
+.rating3-t {
+	background-position: 0 -168px
+}
+
+.rating35-t {
+	background-position: 0 -156px
+}
+
+.rating4-t {
+	background-position: 0 -144px
+}
+
+.rating45-t {
+	background-position: 0 -132px
+}
+
+.rating5-t {
+	background-position: 0 -120px
+}
+
+#exportnotes {
+	padding: 3px 5px;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1
+}
+
+#exportnotes.on {
+	padding: 4px 7px;
+	border: 1px #ccc solid
+}
+
+#exportnotes .arrow {
+	display: inline-block;
+	border-width: 4px;
+	border-color: #566d5e transparent transparent transparent;
+	border-style: solid dashed dashed dashed;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: middle
+}
+
+#exportnotes ul {
+	display: none
+}
+
+.book-cover {
+	float: left;
+	_display: inline;
+	margin-right: 32px
+}
+
+.annotations-context {
+	overflow: hidden;
+	_zoom: 1
+}

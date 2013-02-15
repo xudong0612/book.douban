@@ -1,0 +1,228 @@
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+
+
+    <div id="wrapper">
+        
+
+        
+  <div id="content">
+    
+
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+  
+  <div class="book-express-home clearfix">
+    
+
+    
+  <h2 class='fleft'>
+    新书速递
+      <span class="link-more">
+         <a href="{%url douban.books.views.latests%}">查看更多»</a>
+      </span>
+  </h2>
+
+  <div id="glide1" class="tabs-wrap s" data-dstat-areaid="52" data-dstat-mode="click,expose">
+      
+          <ul class="cover-list clearfix">
+           {%for latest in latests%}
+          <li>
+           <a  href="{%url douban.books.views.book latest.id%}" >
+            <img src="{{latest.pic}} "/>
+        </a>
+ 		
+       
+        </li>
+        {%endfor%}
+        </ul>
+        
+        
+         
+    </div>
+
+  </div>
+  
+
+
+  <h2 class=''>
+    书评人
+      
+  </h2>
+
+<ul class="entry-list-col2s s" data-dstat-areaid="55" data-dstat-mode="click,expose">
+                
+{%for comment in comments%}
+<li class=noline>
+    <a onclick="moreurl(this, {from:'revauthor'})" href="{%url douban.books.views.user comment.user.id%}"><img src="/static/touxiang.jpg" alt="{{comment.user.username}}" class="userface" /></a>
+    <div class="fleft w210">
+        <p>
+            <a onclick="moreurl(this, {from:'revauthor'})" href="{%url douban.books.views.user comment.user.id%}">{{comment.user.username}}</a>
+        </p>
+        <p class="entry-star-small clearfix">
+            <span class="fleft">
+                评论《{{comment.book.title}}》
+            </span>
+        </p>
+        <p>
+            <a onclick="moreurl(this, {from:'revauthor'})" href="{%url douban.books.views.comment comment.id%}">{{comment.contents|truncatewords:"30"}}......</a>
+        </p>
+        <p class="color-gray">
+            {{comment.rate}}有用&nbsp;&nbsp;&nbsp;&nbsp;{{comment.date}}
+        </p>
+    </div>
+</li>
+{%endfor%}
+  
+
+                
+
+
+<ul>
+
+
+
+
+    <div class="book_pop">
+    <h2>
+        最受关注图书榜
+        
+    </h2>
+    
+    <ul class="entry-list-col2 s" data-dstat-areaid="52" data-dstat-mode="click,expose">
+    {%for popular in populars%}
+        <li>
+            <ul class="clearfix">
+            
+
+	
+    <li class="clearfix">
+        <a onclick="moreurl(this, {from:'pop_fiction'})" href="{%url douban.books.views.book popular.id%}">
+        <img src="{{popular.pic}}" alt="{{popular.title}}" class="cover" />
+        </a>
+        <h2>
+            <a onclick="moreurl(this, {from:'pop_fiction'})" href="{%url douban.books.views.book popular.id%}">{{popular.title}}</a>
+        </h2>
+        <p class="entry-star-small clearfix">
+            <span class="allstar45 star-img fleft">
+            </span>
+            <span class="font-small color-red fleft">
+                {{popular.evaluation}}
+            </span>
+            <span class="fleft ml8">新上榜</span>
+            <br />
+            作者:&nbsp;
+            {{popular.author}}
+            
+        </p>
+        
+    </li>
+
+
+            
+            </ul>
+        </li>
+    
+       {%if forloop.counter|divisibleby:"2"%}
+    </ul>
+    <ul class="entry-list-col2 s" data-dstat-areaid="52" data-dstat-mode="click,expose">
+    {%endif%}
+    {%if forloop.last%}
+    </ul>
+    {%endif%}
+      {%endfor%}
+    </div>
+
+</div>
+      <div class="aside">
+        
+    
+  
+
+    
+
+  
+  <h2 class=''>
+    热门标签
+      <span class="link-more">
+         <a href="{%url douban.books.views.tags%}">所有热门标签»</a>
+      </span>
+  </h2>
+
+  <ul class="hot-tags-col5 s" data-dstat-areaid="54" data-dstat-mode="click,expose">
+      
+    {%for tagclass in tagclasses%}
+    <li>
+        <ul class="clearfix">
+            
+            {%for tag in tagclass%}
+            {%if forloop.first%}
+            <li>
+                [{{tag.type.type}}]
+            </li>
+            {%endif%}
+            <li>
+                <a href="{%url douban.books.views.tag tag.id%}">{{tag.contents}}</a>
+            </li>
+           {%endfor%}
+           <li>
+           <a href="{%url douban.books.views.tags%}">更多</a>
+           </li>
+        </ul>
+    </li>
+{%endfor%}
+      
+    
+    
+
+  </ul>
+
+    <div class="block5 movie_show">
+    {%if user != -1%}
+        
+  <h2 class=''>
+    豆瓣猜你可能感兴趣的图书
+      <span class="link-more">
+         <a href="/guess">更多»</a>
+      </span>
+  </h2>
+
+         
+        <div class="content clearfix s" id="book_rec" data-dstat-areaid="59" data-dstat-mode="click,expose">
+               {%for rec in recommendations%}
+        <dl>
+        
+            <dt><a onclick="moreurl(this, {from:'recs'})" href="{%url douban.books.views.book rec.id%}"><img src="{{rec.pic}}" class="m_sub_img"/></a></dt>
+            <dd><a onclick="moreurl(this, {from:'recs'})" href="{%url douban.books.views.book rec.id%}">{{rec.title}}</a><span class="gact">
+            </dd>
+            
+        </dl>
+       {%if forloop.counter|divisibleby:"3"%}
+        <div class="clearfix rr" style="width:100%"></div>
+       {%endif%}
+{%endfor%}
+        </div>
+    </div>
+
+ {%endif%}
+
+    <!-- douban app begin -->
+    <div class="s" data-dstat-areaid="60" data-dstat-mode="click,expose">
+   
+    </div>
+    <!-- douban app end -->
+
+      </div>
+      <div class="extra">
+        
+      </div>
+    </div>
+  </div>
+
+        
+  
+{%include 'foot.tml'%}
+
+
+   

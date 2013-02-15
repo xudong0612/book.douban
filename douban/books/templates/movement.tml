@@ -1,0 +1,114 @@
+{% include 'head.tml' %}
+{% include 'navigate.tml' %}
+  <div id="wrapper">
+  <div id="content">
+    
+    <h1>我的阅读动态</h1>
+
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+  
+
+
+  <div id="miniblog" class="feed_mod">
+    
+ {%for book in books%}
+  <ul class="mbt">
+      
+          <li style="margin-top:10px;border-bottom:1px solid #ddd;">
+          
+            <h2>{{book.date}}</h2>
+          </li> 
+    <li class="mbtl">
+      <a href="{%url douban.books.views.user book.user.id%}">
+        <img src="/static/touxiang.jpg" alt="{{book.user.username}}" title="{{book.user.username}}" />
+      </a>
+    </li>
+
+
+<li class="mbtr">
+  
+
+  <div class="feed_title">
+    <a href="{%url douban.books.views.user book.user.id%}">{{book.user.username}}</a>
+    {{book.status}}
+  </div>
+
+  <div class="feed_con">
+    
+    <ul class="mod_book_list">
+        
+        <li>
+          <div class="mod_book">
+            <div class="mod_book_pic">
+              <a href="{%url douban.books.views.book book.book.id%}">
+                <img class="m_sub_img" src="{{book.book.pic}}" />
+              </a>
+            </div>
+            <div class="mod_book_con">
+              <div class="mod_book_name">
+                <a href="{%url douban.books.views.book book.book.id%}">{{book.book.title}}</a>
+              </div>
+
+              <div class="mod_book_data">
+  
+  
+</div>
+
+                <div>
+                  <span class="allstar40 star-img"></span>
+                </div>
+            </div>
+          </div>
+       </li>
+    </ul>
+    
+  </div>
+  
+</li>
+
+        
+  </ul>
+  
+{% endfor %}
+  </div>
+</div>
+      <div class="aside">
+        
+  
+
+  <div class="mod">
+    
+  
+  <h2>
+    
+  </h2>
+
+    <p class="pl">
+      
+    </p>
+  </div>
+
+
+<div id="friend">
+
+</div>
+
+
+  <div id="friend-3">
+  </div>
+
+  <div class="mod">
+    <p class="pl2">&gt; 
+      
+    </p>
+  </div>
+
+      </div>
+      <div class="extra">
+        
+      </div>
+    </div>
+  </div>
+{% include 'foot.tml' %}

@@ -1,0 +1,254 @@
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+    <div id="wrapper">
+        
+<h1>
+    <span property="v:itemreviewed">{{book.title}}</span>
+    <div class="clear"></div>
+</h1>
+  <div id="content">
+    
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+<div class="indent">
+  <div class="subjectwrap clearfix">
+<div class="subject clearfix">
+<div id="mainpic">
+  
+  <a class="nbg" href="{%url douban.books.views.book book.id%}" title="&lt;bound method Book.seo_title of &lt;Book(20385070, ), title: 只怕不再遇上, uid: 722209461X, cat_id: 1001&gt;&gt;">
+    <img src="{{book.pic}}" title="点击看大图" alt="{{book.title}}" rel="v:photo">
+  </a><br>
+     
+</div>
+<div id="info">
+    <span>
+      <span class="pl"> 作者</span>: 
+        <a href="">{{book.author}}</a>
+    </span><br/>
+    <span class="pl">出版社:</span> {{book.publication}}<br/>
+    <span class="pl">出版年:</span> {{book.publication_date|default:""}}<br/>
+    <span class="pl">页数:</span> {{book.pages}}<br/>
+    <span class="pl">定价:</span> {{book.price}}<br/>
+    <span class="pl">装帧:</span> 平装<br/>
+      <span class="pl">ISBN:</span> {{book.isbn}}<br/>
+
+</div>
+</div>
+<div id="interest_sectl">
+  <div class="rating_wrap clearbox" rel="v:rating">
+    <p class="rating_self clearfix" typeof="v:Rating">
+      <span class="ll bigstar45"></span>
+      <strong class="ll rating_num" property="v:average">
+          {{book.evaluation}}
+      </strong>
+   
+</div>
+</div>
+
+
+  </div>
+  
+
+
+
+  
+
+    
+    <div id="interest_sect_level" class="clearfix">
+    	{%if status != -1%}
+    	<span>我{{status}}这本书</span>&nbsp;&nbsp; 
+    	 <a href="{%url douban.books.views.sharebook book.id%}">
+    	 <span>修改</span>
+    	 </a>
+    	{%else%}
+        <a href="{%url douban.books.views.sharebook book.id%}" rel="nofollow" class="collect_btn colbutt ll" name="pbtn-20385070-wish">
+          <span>想读</span>
+        </a>
+        <a href="{%url douban.books.views.sharebook book.id%}" rel="nofollow" class="collect_btn colbutt ll" name="pbtn-20385070-do">
+          <span>在读</span>
+        </a>
+        <a href="{%url douban.books.views.sharebook book.id%}" rel="nofollow" class="collect_btn colbutt ll" name="pbtn-20385070-collect">
+          <span>读过</span>
+        </a>
+		{%endif%}
+      <div class="ll j a_stars">
+   
+      </div>
+    </div>
+
+
+
+  
+  <div class="gtleft">
+    <ul class="ul_subject_menu bicelink color_gray pt6 clearfix">
+        <li>
+          <img src="" />&nbsp;<a href="{%url douban.books.views.new_note book.id%}">写笔记</a>
+        </li>
+
+        <li>
+          <img src="" />&nbsp;<a href="{%url douban.books.views.new_comment book.id%}" rel="nofollow">写书评</a>
+        </li>
+    </ul>
+  </div>
+  
+<div class="rec-sec">
+	{%if recommandation == 1%}
+  <span class="rec">
+ 
+
+
+
+
+    <a href="{%url douban.books.views.recommandations book.id%}" class="lnk-sharing" data-share-dialog="#book-share"
+      data-dialog-title="推荐图书">推荐</a>
+  </span>
+{%endif%}
+</div>
+
+  
+
+
+</div>
+
+<br clear="all">
+<div id="collect_form_20385070"></div>
+<div class="related_info">
+  
+  <h2>
+    内容简介
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+  </h2>
+
+<div class="indent" id="link-report">
+  
+    <style type="text/css" media="screen">
+.intro p{text-indent:2em;}
+</style>
+<div class="intro">
+    <p>{{book.content_profile}}
+    
+
+</div>
+
+<div id="db-tags-section" class="blank20">
+  
+  
+  
+
+<div class="mod reading-notes">
+  <div class="hd">
+<h2 class="clearfix">
+        <div class="fleft">读书笔记&nbsp;&nbsp;· · · · · ·&nbsp;
+          <span class="pl">(<a href="{%url douban.books.views.book_notes book.id%}">共<span property="v:count">{{notes|length|default:"0"}}</span>篇</a>)</span>
+        </div>
+      </h2>
+      <a rel="nofollow" href="{%url douban.books.views.new_note book.id%}" class="redbutt rr"><span>我来写笔记</span></a>
+  </div>
+
+   {%for note in notes%} 
+    <div class="bd">
+      
+      
+<ul class="by_rank" id="comments">
+    
+    <li class="clearfix" data-cid="23146437">
+        <div class="pic"><a href="{%url douban.books.views.user note.user.id%}"><img src="/static/touxiang.jpg" alt="{{note.user.username}}" /></a></div>
+        <div class="con">
+            <h6><a href="{%url douban.books.views.note note.id%}">第{{note.page|default:"1"}}页</a></h6>
+            <p class="user"><a href="{%url douban.books.views.user note.user.id%}" title="{{note.user.username}}">{{note.user.username}}</a>
+            </p>
+            <div class="reading-note" data-cid="23146437">
+                <div class="short">
+                    {{note.contents|truncatewords:100}}
+                   </div>
+            </div>
+            <p class="pl">
+              {{note.date}}
+              &nbsp;&nbsp;{{note.collectors|length|default:"0"}}人收藏
+              &nbsp;&nbsp;<a href="{%url douban.books.views.note note.id%}">{{note.reply_set.all|length}}回应</a>
+            </p>
+            
+        </div>
+    </li>
+    
+</ul>
+
+
+      
+
+    </div>
+   
+    {%endfor%}
+     <div class="ft">
+      <p>&gt; <a href="{%url douban.books.views.book_notes book.id%}">更多读书笔记（共{{notes|length}}篇）</a></p>
+    </div>
+</div>
+
+  <a name="reviews"></a>
+  <div class="clear"></div>
+      
+   <h2 class="clearfix"> 
+        书评&nbsp;&nbsp;· · · · · ·&nbsp;
+      <a class="redbutt rr" href="{%url douban.books.views.new_comment book.id%}"><span>我来评论这本书</span></a>
+ 
+      </h2>
+    <div class="clear"></div>
+
+        
+    {%for comment in comments%}
+        <div class='ctsh'>
+    <ul class="tlst clearfix" style="clear:both;">
+        <li class="nlst"><h3>
+            <div id="tb-5687640" class="rr"><a id="af-5687640" href="{%url douban.books.views.comment comment.id%}" class="j a_unfolder" style="background:none;">
+            <img src="" class="bn-arrow" width="48" height="19" alt="&gt;" title="展开全文"/></a>
+            <a id="au-5687640" href="javascript:void(0);" class="j a_folder" style="background:none;display:none">
+            <img src="" class="bn-arrow" width="48" height="19" alt="&lt;" title="缩进全文"/></a>
+            </div>
+            <a title="{{comment.title}}" href="{%url douban.books.views.comment comment.id%}">{{comment.title}}</a>
+        </h3></li>
+        <li class="ilst" style="clear:both;">
+                
+    <a href="{%url douban.books.views.user comment.user.id%}" title="{{comment.user.username}}"><img class="pil" src="/static/touxiang.jpg" alt="{{comment.user.username}}"/></a>
+
+        </li>
+        <li class="clst">
+            <span class="pl ll obss">
+                <span class="starb">                    <a href="{%url douban.books.views.user comment.user.id%}">{{comment.user.username}}</a>                    ({{notes|length}})&nbsp;                </span>
+                <span class="allstar40" title="推荐"></span>
+            </span>
+            <br /><br />
+            <div id='review_5687640_short' class="review-short">
+                 {{comment.contents|truncatewords:"100"}}.........
+					
+                    <a class="pl" href="{%url douban.books.views.comment comment.id%}">({{comment.reply_set.all|length}}回应)</a>
+                    <br/><br/><div class="pl clearfix">
+                    <span class="fleft">
+                    {{comment.date}}
+                      <br />
+                      
+                        {{comment.rate}}/{{comment.rate|add:comment.derate}}有用
+                    </span>
+
+                    </div>
+            </div>
+            <div id="review_5687640_full" style="display:none"></div>
+        </li>
+    </ul>
+        </div>
+    <div class="clear"></div>
+
+            </div> 
+{%endfor%}
+    </div></div>
+    </div>
+</div></div>
+    </div>
+
+{%include 'foot.tml'%}
+  
+
+    
+  
+ 
+

@@ -1,0 +1,77 @@
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+<style>
+.tagCol{width:100%}
+.tagCol td{width:20%;font-size:14px}
+    .tagCol td b{
+        font-weight:normal;
+        color:#aaa;
+
+    }
+.indent { line-height: 2.5 }
+</style>
+   <div id="wrapper">
+        
+
+        
+  <div id="content">
+    
+    <h1>豆瓣图书标签</h1>
+
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+<div style="border-bottom: 1px solid rgb(204, 204, 204); padding-bottom: 5px; margin-bottom: 10px;" class="clearfix">
+
+   
+</div>
+        {%for type,tags in tagclasses.items%}
+        <a name="{{type}}"><h2 style="padding-top:10px">{{type}} · · · · · · </h2>
+        </a>
+        <table class="tagCol">
+            <tbody>
+                <tr>
+                	{%for tag in tags%}
+                    <td><a href="{%url douban.books.views.tag tag.id%}">{{tag.contents}}</a></td>
+                    {%if forloop.counter|divisibleby:4%}
+                    </tr><tr>
+                    {%endif%}
+                    {%endfor%}
+                
+            </tbody>
+        </table>
+        {%endfor%}
+</div>
+      <div class="aside">
+        
+  
+  
+  
+  <h2>
+    标签直达
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+  </h2>
+
+
+  <form name="tsp_form" action="{%url douban.books.views.tags%}" method="POST">
+  	<table>
+  		{{form.as_table}}
+  	</table>
+    <input class="butt" type="submit" value="进入"/>
+  </form>
+
+  <br/><br/>
+
+
+      </div>
+      <div class="extra">
+        
+      </div>
+    </div>
+  </div>
+
+        
+ 
+
+
+{%include 'foot.tml'%}

@@ -1,0 +1,62 @@
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+
+    <div id="wrapper">
+      
+  <div id="content">
+    
+  <h1>评论{{book.title}}</h1>
+
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+  <form id="lzform" action="{%url douban.books.views.new_comment book.id%}" method="post" name="lzform"><div style="display:none;"><input type="hidden" name="ck" value="8FJw"/></div>
+    <table align="center">
+      {{form.as_table}}
+
+
+      <tr>
+        <td></td>
+        <td>
+          <br/>
+          <input name="rev_submit" type="submit" value="好了，添加评论"/>&nbsp;&nbsp;&nbsp;
+          <a href="{%url douban.books.views.new_comment book.id%}">&gt; 取消</a>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+      <div class="aside">
+        
+  <div class="indent">
+    <div class="pl indent">
+      <p>请尊重创作者的劳动，勿提供下载信息、或转载他人的文章。</p>
+      <p>为了鼓励有益的分享, 少于50字的评论将在前页论坛里发表。</p>
+      <p>如果评论涉及电影和小说的结局和关键情节，请勾选“有关键情节透露”。豆瓣将显示提示，以免没有看过的人扫兴。</p>
+    </div>
+    <p style="margin-top:0pt;" class="pl2">&gt; <a href="{%url douban.books.views.book book.id%}">去 {{book.title}} 的页面</a></p>
+
+<div>
+    <a href="{%url douban.books.views.book book.id%}"><img class="fil" alt="{{book.title}}" title="{{book.title}}" src="{{book.pic}}" rel="v:image"></a>
+<br clear="all"/>
+    <span class="pl">作者:</span>{{book.author}}<br/>
+    <span class="pl">isbn:</span> {{book.isbn}}<br/>
+    <span class="pl">书名:</span> {{book.title}}<br/>
+    <span class="pl">页数:</span> {{book.pages}}<br/>
+    <span class="pl">作者:</span> <a href="">{{book.author}}</a><br/>
+    <span class="pl">定价:</span> {{book.price}}元<br/>
+    <span class="pl">出版社:</span> {{book.publication}}<br/>
+    <span class="pl">出版年:</span> {{book.publication_date}}<br/>
+</div>
+    <br/>
+    &gt; <a href="">豆瓣不欢迎和不允许的内容</a>
+  </div>
+
+      </div>
+      <div class="extra">
+        
+      </div>
+    </div>
+  </div>
+
+{%include 'foot.tml'%}

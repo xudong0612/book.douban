@@ -1,0 +1,68 @@
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+
+    <div id="wrapper">
+  <div id="content">
+    
+    <h1>{{book.title}}</h1>
+
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+<div class="mod reading-notes">
+    <div class="bd">
+        <span class="rr pl">&gt;<a href="{%url douban.books.views.new_note book.id%}">我来写笔记</a></span>
+       
+        
+<ul class="by_rank" id="comments">
+    {%for note in notes%}
+    <li class="clearfix" data-cid="23429804">
+        <div class="pic"><a href="{%url douban.books.views.user note.user.id%}"><img src="/static/touxiang.jpg" alt="{{note.user.username}}" /></a></div>
+        <div class="con">
+            <h6><a href="{%url douban.books.views.note note.id%}">第{{note.page}}页</a></h6>
+            <p class="user"><a href="{%url douban.books.views.user note.user.id%}" title="{{note.user.username}}">{{note.user.username}}</a>
+            </p>
+            <div class="reading-note" data-cid="23429804">
+                <div class="short">
+                    {{note.contents|truncatewords:"200"}}
+                   </div>
+                
+            </div>
+            <p class="pl">
+              {{note.date}}
+               </p>
+           
+        </div>
+    </li>
+    {%endfor%}
+    
+</ul>
+
+    </div>
+</div>
+
+    
+    
+    
+
+
+
+</div>
+      <div class="aside">
+        
+<div class="indent">
+  <p class="pl">笔记是你写在书页留白边上的内容；是你阅读中的批注、摘抄及随感。</p>
+  <p class="pl">笔记必须是自己所写，不欢迎转载。摘抄原文的部分应该进行特殊标明。</p>
+</div>
+<p class="pl"><a href="{%url douban.books.views.book book.id%}"><img src="{{book.pic}}" alt="{{book.title}}"/></a></p>
+<p class="pl2">&gt;<a href="{%url douban.books.views.book book.id%}">{{book.title}}</a></p>
+
+      </div>
+      <div class="extra">
+        
+      </div>
+    </div>
+  </div>
+
+  
+{%include 'foot.tml'%}

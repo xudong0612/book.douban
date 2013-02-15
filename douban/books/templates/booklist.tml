@@ -1,0 +1,61 @@
+    {% include 'head.tml' %}
+{% include 'navigate.tml' %}
+<div id="wrapper">      
+<div id="content">
+<div class="grid-16-8 clearfix">
+<div class="article">
+<div class="rr">搜索结果 共 {{search|length}}</div>
+<div id="subject_list">
+<div class="clearfix">
+</div>
+<p class="ulfirst"></p>
+	{%for book in search%}
+      <table width="100%">
+        <tr class="item">
+          <td width="100" valign="top">
+            <a class="nbg" href="{%url douban.books.views.book book.id%}"
+              onclick="moreurl(this,{i:'0'})">
+              <img src="{{book.pic}}" width="64" />
+            </a>
+          </td>
+          <td valign="top"> 
+            <div class="pl2">
+              <a onclick=&#34;moreurl(this,{i:&#39;0&#39;})&#34; title="{{book.title}}" 
+                href="{%url douban.books.views.book book.id%}">
+                {{book.title}} 
+              </a>          
+              <br/>
+                <span style="font-size:12px;">{{book.author}}</span>
+            </div>
+<p class="pl">{{book.publication}} / {{book.publication_date|default:""}} / {{book.price}}</p>          
+              <div class="star clearfix">
+                  <span class="allstar45"></span>
+                  <span class="rating_nums">{{book.evaluation}}</span>
+
+                <span class="pl">
+                    
+                </span>
+              </div>
+          </td>
+        </tr>
+      </table>
+      {%endfor%}
+        <p class="ul"></p>  
+        
+
+
+  </div>
+
+</div>
+      <div class="aside">
+        
+  <br/>
+  <div id="dale_book_tag_top_right"></div>
+
+
+</div>
+</div>
+    <br/>
+    <br/>
+    
+{% include 'foot.tml' %}

@@ -1,0 +1,91 @@
+
+
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+ 
+    <div id="wrapper">
+        
+
+        
+  <div id="content">
+    
+    <h1>写笔记</h1>
+
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+<div class="mod">
+  
+      
+      <div class="item">
+        <label>图书链接:</label>
+        <input type="text" name="book_url" class="basic" value="{%url douban.books.views.book book.id%}"/>
+        <input type="hidden" name="sid" value="" />
+        <span class="book-name">
+          {{book.title}}
+        </span>
+        
+
+      </div>
+      <legend>&nbsp;</legend>
+      <form class="rnote" method="post" action="{%url douban.books.views.new_note book.id%}"><div style="display:none;"><input type="hidden" name="ck" value="71CJ"/></div>
+    <table>
+			{{form.as_table}}
+		</table>
+		<div class="item-submit">
+        <span class="bn-flat"><input type="submit" value="发表" name="publish"/></span>
+              <input type="hidden" name="kind" value="1005" />
+        <input type="hidden" name="nid" value="23379725" />
+        <input type="hidden" name="hasmath" value="off" />
+                &gt; <a href="{%url douban.books.views.book book.id%}" class="lnk-cancel">取消</a>
+      </div>
+  </form>
+</div>
+
+</div>
+      <div class="aside">
+        
+
+  
+  <h2>
+    什么是读书笔记？
+      
+  </h2>
+
+<p class="pl">你在阅读中想写的批注、摘抄及随感。<br/>
+  如果是摘抄原文部分请使用“标为原文”功能。<br/>
+  禁止在笔记中粘贴未经授权的原文全文。</p>
+
+  
+  <h2>
+    页码应该怎么填？
+      
+  </h2>
+
+<p class="pl">如果你是对一大段内容做的总结笔记，可以填该内容最后一页的页码。</p>
+
+  
+  <h2>
+    图书链接怎么填？
+      
+  </h2>
+
+
+  
+  <h2>
+    如何插入公式？
+      
+  </h2>
+
+
+      </div>
+      <div class="extra">
+        
+      </div>
+    </div>
+  </div>
+
+        
+  
+
+  {%include 'foot.tml'%}

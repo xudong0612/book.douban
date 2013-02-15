@@ -1,0 +1,25 @@
+<div id="db-nav-book" class="nav">
+ 	<div class="nav-wrap">
+		<div class="nav-primary">
+			<div class="nav-logo">
+				<a href="{%url douban.books.views.splesh%}">豆瓣读书</a>
+			</div>
+			<div class="nav-search">
+				<form action="/search" method="get">
+					<fieldset>
+          				<div class="inp"><input id="inp-query" name="search_text" size="22" maxlength="60" style="color: rgb(153, 153, 153);" value="书名、作者" onfocus="if(value=='书名、作者') {value='';}this.style.color='#000';" onblur="if (value=='') {value='书名、作者';this.style.color='#999';}"></div>
+          				<div class="inp-btn"><input type="submit" value="搜索"></div>
+          			</fieldset>
+      			</form>
+    		</div>
+  		</div>
+	</div>
+	<div class="nav-secondary">
+		<ul class="nav-items">
+    		<li class="nav-with-media nav-item-first"><a href="{%url douban.books.views.mine%}">我读</a></li>
+      		<li><a href="{%url douban.books.views.movement%}">动态</a></li>
+      		<li><a href="{%url douban.books.views.guess%}">豆瓣猜</a></li>
+      		<li><a href="{%url douban.books.views.tags%}">分类浏览</a></li>
+   		</ul>
+	</div>
+</div>

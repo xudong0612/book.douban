@@ -1,0 +1,108 @@
+    {% include 'head.tml' %}
+{% include 'navigate.tml' %}
+    <div id="wrapper">
+        
+
+        
+  <div id="content">
+    
+    <h1>豆瓣图书标签: {{tag.contents}}</h1>
+
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+
+  <div id="subject_list">
+ 
+  
+        <p class="ulfirst"></p>
+	
+      <table width="100%">
+        <tr class="item">
+        {%for book in books%}
+          <td width="100" valign="top">
+            <a class="nbg" href="{%url douban.books.views.book book.id%}"
+              onclick="moreurl(this,{i:'0'})"
+
+              >
+              <img src="{{book.pic}}" width="64" />
+            </a>
+          </td>
+          <td valign="top">
+            
+            <div class="pl2">
+
+
+              <a onclick=&#34;moreurl(this,{i:&#39;0&#39;})&#34; title="{{book.title}}" 
+                href="{%url douban.books.views.book book.id%}"
+              >
+                {{book.title}}
+
+                
+              </a>          
+                <br/>
+                <span style="font-size:12px;">{{book.author}}</span>
+            </div>
+
+              <p class="pl">{{book.publication}} / {{book.publication_date}} / {{book.price}}</p>          
+              <div class="star clearfix">
+                  <span class="allstar45"></span>
+                  <span class="rating_nums">{{book.evaluation}}</span>
+
+                <span class="pl">(
+                    {{book.evaluatioins.all|length|default:"0"}}人评价
+                )</span>
+              </div>
+
+
+          </td>
+          {%if forloop.counter|divisibleby:"2"%}
+        </tr>
+       <div class="clear"></div>
+      
+        <tr class="item">
+        {%endif%}
+      {%endfor%}
+      </table>
+        <p class="ul"></p>  
+        
+
+
+  </div>
+
+</div>
+      <div class="aside">
+        
+  <br/>
+  <div id="dale_book_tag_top_right"></div>
+
+    
+  
+  <h2>
+    相关的标签
+      &nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;
+  </h2>
+
+    
+  <div class="tags-list">
+  {%for tag in tags%}
+    <a href="{%url douban.books.views.tag tag.id%}">{{tag.contents}}</a>
+    {%endfor%}
+  </div>
+
+
+  
+  <form name="tsp_form" action="{%url douban.books.views.tag tag.id%}" method="POST">
+  {{form.as_table}}
+    <input class="butt" type="submit" value="进入"/>
+  </form>
+  <br/>
+  <br/>
+
+  <p class="pl2 mb30">
+    &gt; <a href="{%url douban.books.views.tags%}">浏览全部图书标签</a>
+  </p>
+  </div>
+  </div>
+
+{% include 'foot.tml' %}

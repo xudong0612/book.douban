@@ -1,0 +1,117 @@
+{%include 'head.tml'%}
+{%include 'navigate.tml'%}
+ <div id="wrapper">
+        
+
+        
+  <div id="content">
+    
+    <h1>分享</h1>
+
+    <div class="grid-16-8 clearfix">
+      
+      <div class="article">
+<div class="mod">
+  
+      
+      <div class="item">
+        <label>图书链接:</label>
+        <input type="text" name="book_url" class="basic" value="{%url douban.books.views.book book.id%}"/>
+        <input type="hidden" name="sid" value="" />
+        <span class="book-name">
+          {{book.title}}
+        </span>
+        
+
+      </div>
+      <legend>&nbsp;</legend>
+      <form class="rnote" method="post" action="{%url douban.books.views.sharebook book.id%}"><div style="display:none;"><input type="hidden" name="ck" value="71CJ"/></div>
+    <table>
+			{{form.as_table}}
+		</table>
+		<div class="item-submit">
+        <span class="bn-flat"><input type="submit" value="发布" name="publish"/></span>
+              <input type="hidden" name="kind" value="1005" />
+        <input type="hidden" name="nid" value="23379725" />
+        <input type="hidden" name="hasmath" value="off" />
+                &gt; <a href="{%url douban.books.views.book book.id%}" class="lnk-cancel">取消</a>
+      </div>
+  </form>
+  </div>
+  </div>
+      <div class="aside">
+        
+  <h2 class=''>
+    我的标签
+      <span class="link-more">
+         <a href="">我的所有标签»</a>
+      </span>
+  </h2>
+
+  <ul class="hot-tags-col5 s" data-dstat-areaid="54" data-dstat-mode="click,expose">
+      
+    
+    <li>
+        <ul class="clearfix">
+            
+            {%for tag in mytags%}
+            
+            <li>
+                <a href="{%url douban.books.views.tag tag.id%}">{{tag.contents}}</a>
+            </li>
+           {%endfor%}
+           <li>
+           <a href="{%url douban.books.views.tags%}">更多</a>
+           </li>
+        </ul>
+    </li>
+
+      
+    
+    
+
+  </ul>
+    
+  
+
+    
+
+  
+  <h2 class=''>
+    热门标签
+      <span class="link-more">
+         <a href="{%url douban.books.views.tags%}">所有热门标签»</a>
+      </span>
+  </h2>
+
+  <ul class="hot-tags-col5 s" data-dstat-areaid="54" data-dstat-mode="click,expose">
+      
+    {%for tagclass in tagclasses%}
+    <li>
+        <ul class="clearfix">
+            
+            {%for tag in tagclass%}
+            {%if forloop.first%}
+            <li>
+                [{{tag.type.type}}]
+            </li>
+            {%endif%}
+            <li>
+                <a href="{%url douban.books.views.tag tag.id%}">{{tag.contents}}</a>
+            </li>
+           {%endfor%}
+           <li>
+           <a href="{%url douban.books.views.tags%}">更多</a>
+           </li>
+        </ul>
+    </li>
+{%endfor%}
+      
+    
+    
+
+  </ul>
+</div>
+
+</div>
+{%include 'foot.tml'%}

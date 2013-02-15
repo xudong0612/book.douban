@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/static/mixed_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_master_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_subject_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_dialog_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_jquery.snippet_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_notes_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/mixed_static_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_people_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/packed_remark_style.css" type="text/css" />
+<link rel="stylesheet" href="/static/paced_issue_style.css" type="text/css" />
+<title>豆瓣</title>
+</head>
+<body>
+<div id="db-global-nav" class="global-nav global-nav-a">
+	<div class="bd">
+		<div class="top-nav-info">
+			{%if user != -1%}
+			<a href="/account/logout">退出</a>
+			
+			<a href="{%url douban.books.views.account %}">{{user.username}}的账号</a>
+			{%else%}
+    		<a href="/account/login">登录</a>
+    		{%endif%}
+    		<a href="/account/register">注册</a>
+		</div>
+		
+	</div>
+</div>
+<div id="db-nav-book" class="nav">
+ 	<div class="nav-wrap">
+		<div class="nav-primary">
+			<div class="nav-logo">
+				<a href="{%url douban.books.views.splesh%}">豆瓣读书</a>
+			</div>
+			<div class="nav-search">
+				<form action="/search" method="get">
+					<fieldset>
+          				<div class="inp"><input id="inp-query" name="search_text" size="22" maxlength="60" value=""></div>
+          				<div class="inp-btn"><input type="submit" value="搜索"></div>
+          			</fieldset>
+      			</form>
+    		</div>
+  		</div>
+	</div>
+	<div class="nav-secondary">
+		<ul class="nav-items">
+    		<li class="nav-with-media nav-item-first"><a href="{%url douban.books.views.mine%}">我读</a></li>
+      		<li><a href="{%url douban.books.views.movement%}">动态</a></li>
+      		<li><a href="{%url douban.books.views.guess%}">豆瓣猜</a></li>
+      		<li><a href="{%url douban.books.views.tags%}">分类浏览</a></li>
+   		</ul>
+	</div>
+</div>
+ <div id="wrapper">
+        
+
+        
+<div style="margin:100px auto; width:350px;">
+  <img style="float:left;" src=""/>
+  <ul style="margin-left:40px; list-style-type:none; list-style-image: none; list-style-position:outside;">
+    <li style="list-style-type:none; list-style-image:none; list-style-position:outside; font-size:14px; line-height: 32px;">
+  你访问的页面不存在喔~~~~~~你懂得喔~~~~~
+</li>
+    <li style="list-style-type:none; list-style-image:none; list-style-position:outside; color:#666;">&nbsp;</li>
+    <li style="list-style-type:none; list-style-image:none; list-style-position:outside; color:#666;"> 
+  请<a href="/account/login">登录</a>后重试。
+ </li>
+  </ul>
+</div>
+<div id="footer">
+	<span id="icp" class="fleft gray-link">
+    	&copy; 2005－2012 douban.com, all rights reserved
+	</span>
+	<span class="fright">
+    	<a href="">关于豆瓣</a>
+    		· <a href="">在豆瓣工作</a>
+    		· <a href="">联系我们</a>
+    		· <a href="">免责声明</a>
+    		· <a href="">帮助中心</a>
+    		· <a href="" target="_blank">开发者</a>
+    		· <a href="">图书馆合作</a>
+    		· <a href="">手机读书</a>
+    		· <a href="">豆瓣广告</a>
+	</span>
+</div>
+	</div>
+</body>
+</html>
